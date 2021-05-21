@@ -1,0 +1,22 @@
+[17-Apr-2021 03:49:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/labrarym1/public_html/header.php:2) in /home/labrarym1/public_html/account.php on line 9
+[17-Apr-2021 05:54:21 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/labrarym1/public_html/header.php:2) in /home/labrarym1/public_html/account.php on line 9
+[17-Apr-2021 06:10:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/labrarym1/public_html/header.php:2) in /home/labrarym1/public_html/account.php on line 9
+[17-May-2021 13:03:24 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'labrarym_1'@'localhost' (using password: YES) in /home/labrarym2/public_html/include/connection.php on line 9
+[17-May-2021 13:03:25 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'labrarym_1'@'localhost' (using password: YES) in /home/labrarym2/public_html/include/connection.php on line 9
+[17-May-2021 13:36:43 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'labrarym_1'@'localhost' (using password: YES) in /home/labrarym2/public_html/include/connection.php on line 9
+[17-May-2021 13:43:52 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'labrarym_1'@'localhost' (using password: YES) in /home/labrarym2/public_html/include/connection.php on line 9
+[17-May-2021 13:48:23 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Field 'premium' doesn't have a default value in /home/labrarym2/public_html/register.php:30
+Stack trace:
+#0 /home/labrarym2/public_html/register.php(30): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/labrarym2/public_html/register.php on line 30
+[18-May-2021 17:19:47 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Field 'premium' doesn't have a default value in /home/labrarym2/public_html/register.php:30
+Stack trace:
+#0 /home/labrarym2/public_html/register.php(30): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/labrarym2/public_html/register.php on line 30
+[18-May-2021 17:19:50 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Field 'premium' doesn't have a default value in /home/labrarym2/public_html/register.php:30
+Stack trace:
+#0 /home/labrarym2/public_html/register.php(30): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/labrarym2/public_html/register.php on line 30

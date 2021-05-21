@@ -1,0 +1,26 @@
+body{
+    background-color: #ffffff;
+}
+.slider h3, 
+.slider h5{
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+.slider h3{
+    font-weight: bold;
+}
+
+section{
+    padding:20px 0;
+}
+
+hr {
+    border:0,1px solid;
+}
+
+#account-page .collapsible-body .row{
+    margin-top: -1em !important;
+    margin-bottom: -2em !important;
+}
+#account-page .collapsible-body button{
+    margin-bottom: 1em !important;
+}
