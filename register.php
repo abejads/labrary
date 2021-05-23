@@ -13,6 +13,7 @@
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $address = "";
         $telephone = "";
+        $isPremium = 0;
 
 
         $doQuery = $conn->prepare("SELECT * FROM users WHERE email = ?");
@@ -25,9 +26,9 @@
               $error = 5;
             } else {
 
-              $doQuery = $conn->prepare("INSERT INTO users(name, email, password, address, telephone) VALUES (?, ?, ?, ?, ?)");
+              $doQuery = $conn->prepare("INSERT INTO users(name, email, password, address, telephone, premium) VALUES (?, ?, ?, ?, ?, ?)");
 
-              if($doQuery->bind_param("sssss", $name, $email, $password, $address, $telephone) && $doQuery->execute()){
+              if($doQuery->bind_param("sssssi", $name, $email, $password, $address, $telephone, $isPremium) && $doQuery->execute()){
                   
                   echo '<script>alert("Registrasi sukses!")</script>';
     
