@@ -2,9 +2,9 @@
 
 
 $db_server = "localhost";
-$db_name = "labrarym_1";
-$db_user = "labrarym_1";
-$db_pass = "iiYvDGwoS(#@";
+$db_name = "labrary";
+$db_user = "labrary";
+$db_pass = "UJ4nwHAu[9d86yy!";
 
 $conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
 
