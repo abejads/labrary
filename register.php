@@ -73,7 +73,7 @@
                     <label for="password">Password</label>
                     <?php if($error == 5): ?>
                     <p style="color:red">&ensp;&ensp;Email sudah terdaftar</p>
-                    <? endif; ?>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="row">
@@ -95,6 +95,6 @@
         </div>
     </div> 
 </div>
-<?php include("footer.php");?>
+<?php include("footer.php"); ?>
     </body>
 </html>
