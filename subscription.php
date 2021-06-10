@@ -18,7 +18,7 @@
                                 <h1><i class="material-icons prefix small">attach_money</i>0</h1>
                                 <p class="tiny">paid per month</p>
                                 <ul class="pagination">
-                                    <li class="waves-effect waves-light btn"><a style="color:#fff;" href="login.php">GET STARTED</a></li>
+                                    <li class="waves-effect waves-light btn disabled"><a style="color:#fff;">GET STARTED</a></li>
                                 </ul>
                                 <ul class="center black-text">
                                     <li><i class="material-icons prefix tiny">check</i>&ensp;Limited Access Course</li>
@@ -38,7 +38,7 @@
                                 <h5><s><i class="material-icons prefix tiny">attach_money</i>2400</s></h5><h1><i class="material-icons prefix small">attach_money</i>1337</h1>
                                 <p class="tiny">paid per year</p>
                                 <ul class="pagination">
-                                    <li class="waves-effect waves-light btn"><a style="color:#fff;" href="function/subscriptionCheck.php">GET STARTED</a></li>
+                                    <li class="waves-effect waves-light btn"><a style="color:#fff;" href="payment.php">GET STARTED</a></li>
                                 </ul>
                                 <ul class="center black-text">
                                     <li><i class="material-icons prefix tiny">check</i>&ensp;insert feature here</li>
@@ -62,7 +62,7 @@
                                 <h1><i class="material-icons prefix small">attach_money</i>200</h1>
                                 <p class="tiny">paid per month</p>
                                 <ul class="pagination">
-                                    <li class="waves-effect waves-light btn disabled"><a style="color:#000;" href="login.php">GET STARTED</a></li>
+                                    <li class="waves-effect waves-light btn disabled"><a style="color:#000;">GET STARTED</a></li>
                                 </ul>
                                 <ul class="center black-text">
                                     <li><i class="material-icons prefix tiny">check</i>&ensp;insert feature here</li>
