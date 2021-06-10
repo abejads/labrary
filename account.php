@@ -134,9 +134,17 @@
             </div>
         </li>
         <li>
-            <div class="collapsible-header"><i class="material-icons">book</i>My Courses</div>
+            <div class="collapsible-header"><i class="material-icons">stars</i>My Subscription</div>
             <div class="collapsible-body">
-
+            
+            <?php 
+                if ($result["isPremium"] == 0){
+                    echo '<p>Free Subscription</p>
+                        <a href="subscription.php" class="waves-effect waves-light btn-small">Upgrade to Premium!</a>';
+                } else {
+                    echo '<span>Premium Subscription</span>';
+                }
+            ?>   
             </div>
         </li>
         <li>
