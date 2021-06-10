@@ -1,7 +1,6 @@
-<?php include("header.php");?>
+<?php $title = "Register"; include("header.php");?>
 <?php 
 
-    $title = "Register";
     // error 5 email udah ada
         
     require_once("include/connection.php"); 
