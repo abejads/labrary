@@ -46,7 +46,7 @@
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Basic Web Security<i class="material-icons right">more_vert</i></span>
-                                <p><a style="color:#000" href="./course.php?id=1">Go to course</a></p>
+                                <p><a style="color:#000" href="course.php?id=1">Go to course</a></p>
                             </div>
                             <div class="card-reveal">
                                 <span class="card-title grey-text text-darken-4">Web Security<i class="material-icons right">close</i></span>
@@ -61,7 +61,7 @@
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Basic Binary Exploitation<i class="material-icons right">more_vert</i></span>
-                                <p><a style="color:#000" href="./course.php?id=2">Go to course</a></p>
+                                <p><a style="color:#000" href="course.php?id=2">Go to course</a></p>
                             </div>
                             <div class="card-reveal">
                                 <span class="card-title grey-text text-darken-4">Basic Binary Exploitation<i class="material-icons right">close</i></span>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">Basic Reverse Engineering<i class="material-icons right">more_vert</i></span>
-                                <p><a style="color:#000" href="./course.php?id=3">Go to course</a></p>
+                                <p><a style="color:#000" href="course.php?id=3">Go to course</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">Basic Reverse Engineering<i class="material-icons right">close</i></span>
