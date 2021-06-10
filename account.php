@@ -137,8 +137,8 @@
             <div class="collapsible-header"><i class="material-icons">stars</i>My Subscription</div>
             <div class="collapsible-body">
             
-            <?php 
-                if ($result["isPremium"] == 0){
+            <?php
+                if ($result["premium"] == 0){
                     echo '<p>Free Subscription</p>
                         <a href="subscription.php" class="waves-effect waves-light btn-small">Upgrade to Premium!</a>';
                 } else {
