@@ -17,6 +17,7 @@
             if(password_verify($password, $result["password"])){
                 
                 $_SESSION["uid"] = $result["id"];
+                $_SESSION["premium"] = $result["premium"];
                 echo "<script> location.href='account.php'; </script>";
                  exit;
 

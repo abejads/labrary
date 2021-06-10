@@ -18,6 +18,7 @@
             $result = $doQuery->get_result();
 
             if(!$result){
+                $_SESSION["premium"] = 1;
                 echo '<script>alert("Pembelian Berhasil!"); window.location = "account.php";</script>';
             } else {
                 echo '<script>alert("Pembelian Gagal!"); window.location = "subscription.php";</script>';
