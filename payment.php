@@ -1,5 +1,39 @@
 <?php $title = "Payment"; ?>
 <?php include("header.php"); ?>
+
+<?php 
+    
+    require_once("include/connection.php"); 
+    if(isset($_POST["card_number"]) && (strlen($_POST["card_number"]) >= 16) && isset($_POST["exp_date"]) && (strlen($_POST["exp_date"]) == 5) && isset($_POST["cardvv"]) && (strlen($_POST["cardvv"]) >= 3) && isset($_POST["card_owner"]) && $_POST["card_owner"] != "" && isset($_POST["submit"])){
+        
+        $card_number = $_POST["card_number"];
+        $exp_date = $_POST["exp_date"];
+        $cardvv = $_POST["cardvv"];
+        $card_owner = $_POST["card_owner"];
+        $premium = 1;
+
+        $doQuery = $conn->prepare("UPDATE users SET premium = ? WHERE id = ?");
+
+        if($doQuery->bind_param("ii", $premium, $_SESSION['uid']) && $doQuery->execute()){
+            $result = $doQuery->get_result();
+
+            if(!$result){
+                echo '<script>alert("Pembelian Berhasil!"); window.location = "account.php";</script>';
+            } else {
+                echo '<script>alert("Pembelian Gagal!"); window.location = "subscription.php";</script>';
+            }
+            
+        } else {
+            echo '<script>alert("Error!")<script>';
+        }
+        
+
+    } else {
+        $error = 0;
+    }
+
+    
+?>
 <div class="container">
     <div id="payment" class="row">
         <div class="row">
@@ -18,24 +52,24 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix small">date_range</i>
-                            <input placeholder="MM/YY" id="exp_date" type="text" class="validate">
+                            <input placeholder="MM/YY" id="exp_date" type="text" class="validate" name="exp_date">
                             <label for="exp_date">Expiration Date</label>
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix small">lock</i>
-                            <input placeholder="CVV" id="cardvv" type="password" class="validate">
+                            <input placeholder="CVV" id="cardvv" type="password" class="validate" name="cardvv">
                             <label for="cvv">CVV</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix small">person</i>
-                            <input placeholder="Card Owner Name" id="card_owner" type="text" class="validate">
+                            <input placeholder="Card Owner Name" id="card_owner" type="text" class="validate" name="card_owner">
                             <label for="card_owner">Card Owner Name</label>
                         </div>
                     </div>
                     <div class="input-field col s12">
-                        <button class="btn waves-effect waves-light col s12">Process Now</button>
+                        <button class="btn waves-effect waves-light col s12" name="submit">Process Now</button>
                     </div>
                 </form>
             </div>
