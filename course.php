@@ -1,6 +1,5 @@
 <?php $title = "Courses"; include("header.php"); ?>
 <?php 
-    echo $_SESSION['premium'];
     // -1  itu salah pass. 0 datanya ga ada. 
     // 3 = get course
     // 10 = course premium, account free -> dont have access
@@ -145,84 +144,18 @@
 </section>
 </div>
 
-<?php 
-    echo $_SESSION['premium'];
-    elseif($error == 3):
-    $course = $result->fetch_assoc();
-    if($course["isPremium"] == 1 && $_SESSION["premium"] == 0): ?>
-        <h3 style="padding-top: 5%;">Course is Premium</h3> 
-            <h5 style="padding-bottom: 32%">Please upgrade your account to Premium</h5>
-            </div>
-    <?php else: ?>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <!--INI KODE BUAT BENERIN IFRAME DI MOBILE -->
-        <style>
-            #playlist {
-                display: column;
-                float: right;
-                text-align: left;
-                font-size: 24px;
-                margin-right: 80px;
-                margin-left: 20px;
-                margin-top: 0px;
-                margin-bottom: 0px;
-            }
-            #playlist li {
-                cursor: pointer;
-                padding: 10px;
-            }
-            #playlist li:hover {
-                color: #26a69a;
-            }
-            #videoarea {
-                float: center;
-                width: 720px;
-                height: 576px;
-                margin-top: 10px;
-                margin-left: 10px;
-                margin-bottom: 10px;
-                border: 3px solid grey;
-                max-width: 100%;
-                max-height: 100%;
-            }
-        </style>
-        <!-- XIXIXI -->
+<?php elseif($error == 3): $course = $result->fetch_assoc();?>
+    
         <section id="web-hacking" class="services" style="padding-bottom: 100px">
             <h3 style="margin-top: 30px;" class="center"><?php echo $course["courseName"]; ?></h3> 
-            <h5 class="center"><?php echo $course["courseAuthor"]; ?></h5></br></br>
-            <div class="black card-panel center">
-                <video id="videoarea" oncontextmenu="return false;" controls="controls" controls controlsList="nodownload" poster="" src="" type="video/mp4"></video>
-                <ul id="playlist" class="white-text">
-                    <h3>List of Contents</h3>
-                    <hr>
-                    <li movieurl="http://labrary.my.id/video/1_ Web - Beberapa terminologi dasar HTTP.mp4" movieposter="img/cysecipb.png">1. Basic HTTP Terminology</li>
-                    <li movieurl="http://labrary.my.id/video/2_ Web - PHP local file inclusion (LFI).mp4" movieposter="img/cysecipb.png">2. PHP local file inclusion (LFI)</li>
-                    <li movieurl="http://labrary.my.id/video/3_ Web - PHP remote file inclusion (RFI).mp4" movieposter="img/cysecipb.png">3. PHP remote file inclusion (RFI)</li>
-                    <li movieurl="#" movieposter="">4. File upload vulnerability</li>
-                    <li movieurl="#" movieposter="">5. Basic SQL injection</li>
-                    <li movieurl="#" movieposter="">6. SQL injection UNION</li>
-                    <li movieurl="#" movieposter="">7. Blind SQL Injection</li>
-                    <li movieurl="#" movieposter="">8. Blind SQL Injection (time-based)</li>
-                </ul>
+            <h5 class="center">by <?php echo $course["courseAuthor"]; ?></h5></br></br>
+            <div class="black card-panel center"><img src="img/<?php echo $course["courseImage"]; ?>"></div>
+            <p style="font-size: 20px"><?php echo $course["courseDetails"]; ?></p>
+            <div class="col m12 s12">
+                <a style="width: 100%;" href="room.php?id=<?php echo $course["courseID"]; ?>" class="waves-effect waves-light btn-large">Go To Course</a>
             </div>
         </section>
         </div>
-    <?php endif;?>
 
 <?php endif; ?>
-        <script>
-            $(function() {
-                $("#playlist li").on("click", function() {
-                    $("#videoarea").attr({
-                        "src": $(this).attr("movieurl"),
-                        "poster": "",
-                        "autoplay": "autoplay"
-                    })
-                })
-                $("#videoarea").attr({
-                    "src": $("#playlist li").eq(0).attr("movieurl"),
-                    "poster": $("#playlist li").eq(0).attr("movieposter")
-                })
-            })
-        </script>
 <?php include("footer.php"); ?>
