@@ -93,7 +93,7 @@
 
 ?>
 <div class="container">
-    <div id="account-page" class="row" style="margin-top:100px;margin-bottom:100px">
+    <div id="account-page" class="row" style="margin-top:120px;margin-bottom:100px">
     <h2>Hello <?php ngecho($result["name"]); ?>!</h2>
     <ul class="collapsible">
         <li>
