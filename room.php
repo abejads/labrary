@@ -1,3 +1,43 @@
+<?php session_start(); ?>
+<?php 
+    
+    require_once("include/connection.php"); 
+
+    if(isset($_GET["id"]) && $_GET["id"] != "") {
+        
+        $id =  $_GET["id"];
+        $doQuery = $conn->prepare("SELECT * FROM courses WHERE courseID = ?");
+        
+        if($doQuery->bind_param("i", $id) && $doQuery->execute()){
+
+            $result = $doQuery->get_result();
+            if($result->num_rows > 0){
+                
+                $course = $result->fetch_assoc();
+                
+                if(!isset($_SESSION["uid"]) && !isset($_SESSION["premium"])){
+                    echo '<script>alert("Please login first to access this course"); window.location = "login.php";</script>';
+                    die();   
+                } else if($course["isPremium"] == 1 && $_SESSION["premium"] == 0){
+                    echo '<script>alert("Course is Premium, Please upgrade your account to Premium"); window.location = "subscription.php";</script>';
+                    die();
+                }
+
+            } else {
+                $error = 0;
+            }
+
+
+        } else {
+            echo '<script>alert("Error!")<script>';
+            die();
+        }
+
+        
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
