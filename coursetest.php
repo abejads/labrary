@@ -32,7 +32,7 @@
             <li movieurl="http://labrary.my.id/course/video/PHP_local_file_inclusion_(LFI).mp4" movieposter="img/cysecipb.png">2. PHP Local File Inclusion (LFI)</li>          
             <li movieurl="http://labrary.my.id/course/video/PHP_remote_file_inclusion_(RFI).mp4" movieposter="img/cysecipb.png">3. PHP Remote File Inclusion (RFI)</li>
         </ul>
-        <ul class="sidenav" id="mobile-nav">
+        <ul class="sidenav" id="mobile-nav" style="padding-left:20px;">
             <li movieurl="http://labrary.my.id/course/video/terminologi_dasar_HTTP.mp4" movieposter="img/cysecipb.png">1. Terminologi Dasar HTTP</li>
             <li movieurl="http://labrary.my.id/course/video/PHP_local_file_inclusion_(LFI).mp4" movieposter="img/cysecipb.png">2. PHP Local File Inclusion (LFI)</li>          
             <li movieurl="http://labrary.my.id/course/video/PHP_remote_file_inclusion_(RFI).mp4" movieposter="img/cysecipb.png">3. PHP Remote File Inclusion (RFI)</li>
