@@ -65,7 +65,7 @@
                         </div>
                         <div class="right hide-on-med-and-down">
                             <a class='dropdown-trigger btn' href='#' data-target='playlist'>Basic Web Security</a>
-                            <a class="waves-effect waves-light btn">Course Lab</a>
+                            <a class="waves-effect waves-light btn" href="lab/lab_basic-security_admin.php">Course Lab</a>
                         </div>
                         <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
                     </div>
