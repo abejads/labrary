@@ -1,5 +1,10 @@
 <?php session_start(); ?>
 <?php 
+
+    if(!isset($_SESSION["uid"])){
+        header("Location: index.php");
+        die();
+    }    
     
     require_once("include/connection.php"); 
 
