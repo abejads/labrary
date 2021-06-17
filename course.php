@@ -145,17 +145,18 @@
 </div>
 
 <?php elseif($error == 3): $course = $result->fetch_assoc();?>
-    
         <section id="web-hacking" class="services" style="padding-bottom: 100px">
+        <div class="row">
             <h3 style="margin-top: 30px;" class="center"><?php echo $course["courseName"]; ?></h3> 
             <h5 class="center">by <?php echo $course["courseAuthor"]; ?></h5></br></br>
-            <div class="black card-panel center"><img src="img/<?php echo $course["courseImage"]; ?>"></div>
-            <p style="font-size: 20px"><?php echo $course["courseDetails"]; ?></p>
-            <div class="col m12 s12">
-                <a style="width: 100%;" href="room.php?id=<?php echo $course["courseID"]; ?>" class="waves-effect waves-light btn-large">Go To Course</a>
+            <div class="col s3"></div>
+            <div class="col s6 card">
+                <h3>"</h3><h5 class="center"><?php echo $course["courseDetails"]; ?></h5><h3 class="right">"</h3></br></br></br>
+                <a class="waves-effect waves-light btn right" style="margin-bottom:5%" href="room.php?id=<?php echo $course["courseID"]; ?>">Go To Course</a>
             </div>
+            <div class="col s3"></div>
+        </div>
         </section>
         </div>
-
 <?php endif; ?>
 <?php include("footer.php"); ?>
