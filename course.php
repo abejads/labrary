@@ -115,7 +115,7 @@
                 </div>
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4"><?php echo $course["courseName"]; ?><i class="material-icons right">more_vert</i></span>
-                    <p><a style="color:#26a69a;" href="course.php?id=<?php echo $course["courseID"]; ?>#web-hacking">Go to course</a></p>
+                    <p><a style="color:#26a69a;" href="course.php?id=<?php echo $course["courseID"]; ?>">Go to course</a></p>
                 </div>
                 <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4"><?php echo $course["courseName"]; ?><i class="material-icons right">close</i></span>
@@ -135,8 +135,8 @@
             <h5 class="center">by <?php echo $course["courseAuthor"]; ?></h5></br></br>
             <div class="col s3"></div>
             <div class="col s12 card">
-                    <div class="card-image">
-                        <img src="img/web-security.jpg"></img>
+                    <div class="card-image" style="margin-top: 1em;">
+                        <img src="img/<?php echo $course['courseImage']; ?>"></img>
                     </div>
                     <h3>"</h3><h5 class="center"><?php echo $course["courseDetails"]; ?></h5><h3 class="right">"</h3></br></br></br>
                     <a class="waves-effect waves-light btn right" style="margin-bottom:5%" href="room.php?id=<?php echo $course["courseID"]; ?>">Go To Course</a>
