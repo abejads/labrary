@@ -1,5 +1,26 @@
 <?php $title = "Online Couses Cyber Security"; ?>
 <?php include("header.php"); ?>
+<?php
+
+    require_once("include/connection.php"); 
+
+    $doQuery = $conn->prepare("SELECT * FROM courses");
+        
+    if($doQuery->execute()){    
+
+        $result = $doQuery->get_result();
+        if($result->num_rows > 0){
+            $error = 1;
+        } else {
+            $error = 0;
+        }
+
+    } else {
+        echo '<script>alert("Error!")<script>';
+        die();
+    }
+
+?>
 
         <!-- slider -->
         <div class="slider">
@@ -39,51 +60,24 @@
                 <div class="row">
                     <hr style="width:8%;height:4px;background-color:#26a69a;text-align:center;">
                     <h3 class="center">Popular Courses</h3></br>
+
+                <?php while($course = $result->fetch_assoc()): ?>
                     <div class="col m4 s12">
                         <div class="card">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="img/web-security.jpg" width="500" height="240">
+                                <img class="activator" src="img/<?php echo $course['courseImage']; ?>" width="500" height="240">
                             </div>
                             <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Basic Web Security<i class="material-icons right">more_vert</i></span>
-                                <p><a style="color:#000" href="course.php?id=1">Go to course</a></p>
+                                <span class="card-title activator grey-text text-darken-4"><?php echo $course['courseName']; ?><i class="material-icons right">more_vert</i></span>
+                                <p><a style="color:#000" href="course.php?id=<?php echo $course['courseID']; ?>">Go to course</a></p>
                             </div>
                             <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4">Web Security<i class="material-icons right">close</i></span>
-                                <p>Websites all around the world are programmed using various programming languages. While there are specific vulnerabilities in each programming langage that the developer should be aware of, there are issues fundamental to the internet that can show up regardless of the chosen language or framework.</p>
+                                <span class="card-title grey-text text-darken-4"><?php echo $course['courseName']; ?><i class="material-icons right">close</i></span>
+                                <p><?php echo $course['courseDetails']; ?></p>
                             </div>
                         </div>
                     </div> 
-                    <div class="col m4 s12">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="img/binex.jpeg" width="500" height="240">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Basic Binary Exploitation<i class="material-icons right">more_vert</i></span>
-                                <p><a style="color:#000" href="course.php?id=2">Go to course</a></p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4">Basic Binary Exploitation<i class="material-icons right">close</i></span>
-                                <p>Binary Exploitation is a broad topic within Cyber Security which really comes down to finding a vulnerability in the program and exploiting it to gain control of a shell or modifying the program's functions.</p>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="col m4 s12">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="img/reversing.jpg" width="500" height="240">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Basic Reverse Engineering<i class="material-icons right">more_vert</i></span>
-                                <p><a style="color:#000" href="course.php?id=3">Go to course</a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Basic Reverse Engineering<i class="material-icons right">close</i></span>
-                            <p>Reverse Engineering is typically the process of taking a compiled (machine code, bytecode) program and converting it back into a more human readable format.</p>
-                        </div>
-                    </div>    
-                    </div> 
+                <?php endwhile; ?>
                 </div>
             </section>
         </div>
