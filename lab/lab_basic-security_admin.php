@@ -12,14 +12,12 @@
 
 	if($doQuery->bind_param("s", $file) && $doQuery->execute()){
 		$result = $doQuery->get_result();
-		while ($course = $result->fetch_assoc()){
-			$courseID = $course['courseID'];
-			break;
-		}
+		$course = $result->fetch_assoc();
+		$courseID = $course['courseID'];
 
-		$doQuery = $conn->prepare("SELECT * FROM certificates WHERE courseID = ?");
+		$doQuery = $conn->prepare("SELECT * FROM certificates WHERE courseID = ? AND userID = ?");
 
-		if($doQuery->bind_param("i", $courseID) && $doQuery->execute()){
+		if($doQuery->bind_param("ii", $courseID, $_SESSION['uid']) && $doQuery->execute()){
 			$result = $doQuery->get_result();
 			if($result->num_rows > 0){
 				$error = 10;
