@@ -22,7 +22,8 @@
 		if($doQuery->bind_param("i", $courseID) && $doQuery->execute()){
 			$result = $doQuery->get_result();
 			if($result->num_rows > 0){
-				echo '<script>alert("You have been completed this lab, try another lab!"); window.location = "course.php";</script>';
+				echo '<script>alert("You have been completed this lab, try another lab!"); window.location = "../course.php";</script>';
+				die();
 			}
 		}
 	
@@ -80,7 +81,7 @@
 	<body>
 	<center>
 		<h1 style="margin-bottom: 10%;">Congratulations!</h1>
-		<h1>You completed this lab, heres your <a href="../certificate.php?id=<?php echo certID; ?>">certificates</a></h1>
+		<h1>You completed this lab, heres your <a href="../certificate.php?certID=<?php echo certID; ?>">certificates</a></h1>
 	</center>
 
 	</body>
