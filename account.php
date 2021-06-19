@@ -10,7 +10,7 @@
         die();
     }
 
-    if((isset($_POST["email"]) && $_POST["email"] != "") || (isset($_POST["name"]) && $_POST["name"] != "") || (isset($_POST["telephone"]) && $_POST["telephone"] != "")  || (isset($_POST["address"]) && $_POST["address"] != "")) {
+    if((isset($_POST["email"]) && $_POST["email"] != "") || (isset($_POST["name"]) && $_POST["name"] != "" && strlen($_POST["name"]) <= 30) || (isset($_POST["telephone"]) && $_POST["telephone"] != "")  || (isset($_POST["address"]) && $_POST["address"] != "")) {
         
         $name = $_POST["name"];
         $telephone = $_POST["telephone"];
@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="input-field col s12" style="margin-bottom:0; margin-top:1.5em">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="name" type="text" class="validate" name="name" value="<?php ngecho($result["name"]); ?>">
+                        <input id="name" type="text" class="validate" name="name" maxlength="30" value="<?php ngecho($result["name"]); ?>">
                         <label for="name">Name</label>
                     </div>
                     <div class="input-field col m6 s12" style="margin-bottom:0;">
