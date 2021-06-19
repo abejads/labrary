@@ -176,7 +176,7 @@
         </li>
         <li>
             <div class="collapsible-header"><i class="material-icons">fingerprint</i>My Labs</div>
-            <div class="collapsible-body"><span>Work in process..</span></div>
+            <div class="collapsible-body"><span>You can access the lab inside course page.</span></div>
         </li>
         <li>
             <div class="collapsible-header"><i class="material-icons">school</i>My Certificates</div>
