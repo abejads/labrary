@@ -85,7 +85,7 @@
 	<body>
 	<center>
 		<h1 style="margin-bottom: 10%;">Congratulations!</h1>
-		<h1>You completed this lab, heres your <a href="../certificate.php?certID=<?php echo certID; ?>">certificates</a></h1>
+		<h1>You completed this lab, heres your <a href="../certificate.php?certID=<?php echo $certID; ?>">certificates</a></h1>
 	</center>
 
 	</body>
