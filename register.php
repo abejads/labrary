@@ -8,7 +8,7 @@
         
     require_once("include/connection.php"); 
     
-    if(isset($_POST["email"]) && $_POST["email"] != "" && isset($_POST["password"]) && $_POST["password"] != "" && isset($_POST["name"]) && $_POST["name"] != "" && len($_POST['name']) <= 30 ){
+    if(isset($_POST["email"]) && $_POST["email"] != "" && isset($_POST["password"]) && $_POST["password"] != "" && isset($_POST["name"]) && $_POST["name"] != "" && strlen($_POST['name']) <= 30 ){
 
         $name = $_POST["name"];
         $email = $_POST["email"];
