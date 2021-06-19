@@ -22,8 +22,7 @@
 		if($doQuery->bind_param("i", $courseID) && $doQuery->execute()){
 			$result = $doQuery->get_result();
 			if($result->num_rows > 0){
-				echo '<script>alert("You have been completed this lab, try another lab!"); window.location = "../course.php";</script>';
-				die();
+				$error = 10;
 			}
 		}
 	
@@ -40,20 +39,25 @@
 	    	setcookie('disabled', '', time() - 3600, '/'); 
 
 		} else if(strtolower($_COOKIE['disabled']) == 'false'){
-			$error = 100;
+			if ($error == 10){
 
-			$certID = md5(uniqid(time(), true));
-			$doQuery = $conn->prepare("INSERT INTO certificates VALUES(?, ?, ?)");
-
-			if($doQuery->bind_param("sii", $certID, $courseID, $_SESSION['uid']) && $doQuery->execute()){
-
-				$certID = $certID;
 
 			} else {
-				echo '<script>alert("Error!")<script>';
-        		die();
-			}
 
+				$certID = md5(uniqid(time(), true));
+				$date = date("Y-m-d");
+				$doQuery = $conn->prepare("INSERT INTO certificates VALUES(?, ?, ?, ?)");
+
+				if($doQuery->bind_param("siis", $certID, $courseID, $_SESSION['uid'], $date) && $doQuery->execute()){
+
+					$certID = $certID;
+
+				} else {
+					echo '<script>alert("Error!")<script>';
+	        		die();
+				}
+			}
+			$error = 100;
 
 
 		} else {
