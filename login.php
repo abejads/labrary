@@ -1,6 +1,9 @@
 <?php $title = "Login"; include("header.php"); ?>
 <?php 
-    
+    if(isset($_SESSION["uid"])){
+        header("Location: account.php");
+        die();
+    }
     // -1  itu salah pass. 0 data postnya ga ada. 
     require_once("include/connection.php"); 
 

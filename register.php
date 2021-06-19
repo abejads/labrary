@@ -1,12 +1,15 @@
 <?php $title = "Register"; include("header.php");?>
 <?php 
-
+    if(isset($_SESSION["uid"])){
+        header("Location: account.php");
+        die();
+    }
     // error 5 email udah ada
         
     require_once("include/connection.php"); 
     
-    if(isset($_POST["email"]) && $_POST["email"] != "" && isset($_POST["password"]) && $_POST["password"] != "" && isset($_POST["name"]) && $_POST["name"] != ""){
-        
+    if(isset($_POST["email"]) && $_POST["email"] != "" && isset($_POST["password"]) && $_POST["password"] != "" && isset($_POST["name"]) && $_POST["name"] != "" && len($_POST['name']) <= 30 ){
+
         $name = $_POST["name"];
         $email = $_POST["email"];
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
@@ -50,12 +53,12 @@
 <div class="container">
     <div id="login-page" class="row">
         <h1>Register</h1>
-        <div class="col s12 z-depth-6 card-panel">
+        <div class="col s12 z-depth-6 card-panel" style="padding: 1em 1.5em; ">
             <form class="login-form" method="POST">
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <input id="name" type="text" name="name">
+                    <input id="name" type="text" name="name" maxlength="30">
                     <label for="name">Name</label>
                 </div>
             </div>
