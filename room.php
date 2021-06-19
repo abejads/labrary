@@ -26,10 +26,25 @@
                 } else if($course["isPremium"] == 1 && $_SESSION["premium"] == 0){
                     echo '<script>alert("Course is Premium, Please upgrade your account to Premium"); window.location = "subscription.php";</script>';
                     die();
+                } else {
+
+                    $name = $course['courseName'];
+
+                    $doQuery = $conn->prepare("SELECT * FROM rooms WHERE courseID = ?");
+
+                    if($doQuery->bind_param("i", $id) && $doQuery->execute()){
+
+                        $rooms = $doQuery->get_result();
+
+                    } else {
+                        header("Location: course.php");
+                    }
+
                 }
 
             } else {
-                $error = 0;
+                echo '<script>alert("Sorry, we dont have a room for that course :("); window.location = "course.php";</script>';
+                die();
             }
 
 
@@ -39,6 +54,8 @@
         }
 
         
+    } else {
+        header("Location: course.php");
     }
 
 ?>
@@ -54,8 +71,20 @@
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="icon" href="img/icon.png">
+        <style type="text/css">body{overflow: hidden};</style>
     </head>
     <body class="black">
+        <ul id='playlist' class='dropdown-content'>
+        <?php while($detail = $rooms->fetch_assoc()): ?>
+            <li movieurl="<?php echo $detail['roomVideo']; ?>" movieposter="img/<?php echo $detail['roomThumbnail']; ?>"><?php echo $detail['roomList']; ?></li>
+        <?php endwhile; ?>
+        </ul>
+        <ul class="sidenav" id="mobile-nav" style="padding-left:20px;">
+        <?php while($detail = $rooms->fetch_assoc()): ?>
+            <li movieurl="<?php echo $detail['roomVideo']; ?>" movieposter="img/<?php echo $detail['roomThumbnail']; ?>"><?php echo $detail['roomList']; ?></li>
+        <?php endwhile; ?>
+        </ul>
+
         <div class="navbar-fixed">
             <nav class="black">
                 <div class="container">
@@ -64,24 +93,28 @@
                             <i class="material-icons white-text">arrow_back</i><a href="index.php"><img src="img/logo-white.png" alt="" width="120px" height="22px"></img></a>
                         </div>
                         <div class="right hide-on-med-and-down">
-                            <a class='dropdown-trigger btn' href='#' data-target='playlist'>Basic Web Security</a>
-                            <a class="waves-effect waves-light btn" href="lab/lab_basic-security_admin.php">Course Lab</a>
+                            <a class='dropdown-trigger btn' href='#' data-target='playlist'><?php echo $name; ?></a>
+                            <?php 
+                                $doQuery = $conn->prepare("SELECT * FROM labs WHERE labID = ?");
+
+                                if($doQuery->bind_param("i", $id) && $doQuery->execute()){
+
+                                    $labs = $doQuery->get_result();
+                                    while($lab = $labs->fetch_assoc()){
+                                        $labname = $lab['labPath'];
+                                    }
+                                } else {
+                                    echo '<script>alert("Error loading LAB!")</script>';
+                                }
+                            ?>
+                            <a class="waves-effect waves-light btn" href="lab/<?php echo $labname; ?>">Course Lab</a>
                         </div>
                         <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
                     </div>
                 </div>
             </nav>
         </div>
-        <ul id='playlist' class='dropdown-content'>
-            <li movieurl="http://labrary.my.id/course/video/terminologi_dasar_HTTP.mp4" movieposter="img/cysecipb.png">1. Terminologi Dasar HTTP</li>
-            <li movieurl="http://labrary.my.id/course/video/PHP_local_file_inclusion_(LFI).mp4" movieposter="img/cysecipb.png">2. PHP Local File Inclusion (LFI)</li>          
-            <li movieurl="http://labrary.my.id/course/video/PHP_remote_file_inclusion_(RFI).mp4" movieposter="img/cysecipb.png">3. PHP Remote File Inclusion (RFI)</li>
-        </ul>
-        <ul class="sidenav" id="mobile-nav" style="padding-left:20px;">
-            <li movieurl="http://labrary.my.id/course/video/terminologi_dasar_HTTP.mp4" movieposter="img/cysecipb.png">1. Terminologi Dasar HTTP</li>
-            <li movieurl="http://labrary.my.id/course/video/PHP_local_file_inclusion_(LFI).mp4" movieposter="img/cysecipb.png">2. PHP Local File Inclusion (LFI)</li>          
-            <li movieurl="http://labrary.my.id/course/video/PHP_remote_file_inclusion_(RFI).mp4" movieposter="img/cysecipb.png">3. PHP Remote File Inclusion (RFI)</li>
-        </ul>
+
         <style>
             #playlist {
                 display:table;
