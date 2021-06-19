@@ -180,7 +180,37 @@
         </li>
         <li>
             <div class="collapsible-header"><i class="material-icons">school</i>My Certificates</div>
-            <div class="collapsible-body"><span>Work in process..</span></div>
+            <div class="collapsible-body">
+                <?php
+                   
+                    $doQuery = $conn->prepare("SELECT * FROM users JOIN certificates ON users.id = certificates.userID JOIN courses ON certificates.courseID = courses.courseID WHERE users.id = ?");
+
+                    if($doQuery->bind_param("i", $_SESSION["uid"]) && $doQuery->execute()){
+                        
+                        $result = $doQuery->get_result();
+
+                    } else {
+                        echo '<script>alert("Error!")<script>';
+                    }
+
+                    if ($result->num_rows > 0 ){
+                        while($cert = $result->fetch_assoc()):
+                        ?>
+                        <ul class="collection">
+                            <li class="collection-item avatar">
+                              <img src="img/<?php echo $cert['courseImage']; ?>" alt="" class="circle">
+                              <span class="title"><b><?php echo $cert['courseName']; ?></b></span>
+                              <p>Passed this lab on <?php echo date('d  F  Y', strtotime($cert['date'])); ?><br>
+                              <a href="certificate.php?certID=<?php echo $cert['certID']; ?>" class="secondary-content"><i class="material-icons">arrow_forward</i></a>
+                            </li>   
+                        </ul>
+                <?php endwhile; 
+                    } else {
+                      echo "<span>You don't have any certificates yet</span>";  
+                    } 
+
+                 ?>
+            </div>
         </li>
     </ul>   
     </div>
