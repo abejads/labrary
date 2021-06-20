@@ -90,7 +90,7 @@
                 <div class="container">
                     <div class="nav-wrapper">
                         <div class="brand-logo black-text">
-                            <i class="material-icons white-text">arrow_back</i><a href="index.php"><img src="img/logo-white.png" alt="" width="120px" height="22px"></img></a>
+                            <a href="index.php"><i class="material-icons white-text">arrow_back</i></a><a></a><img src="img/logo-white.png" alt="" width="120px" height="22px"></img></a>
                         </div>
                         <div class="right hide-on-med-and-down">
                             <a class='dropdown-trigger btn' href='#' data-target='playlist'><?php echo $name; ?></a>
